@@ -1,0 +1,87 @@
+<!--
+<template name="nav">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">TextCircle</a>
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#" class="js-add-doc">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        new document
+                    </a>
+                </li>
+
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documents <span class="caret"></span></a>
+
+                    <ul class="dropdown-menu">
+                        {{#each documents}}
+                            <li><a href="/documents/{{_id}}" class="">{{title}}</a></li>
+                        {{/each}}
+                    </ul>
+                </li>
+            </ul>
+            <div class="nav navbar-right">
+                <div class="navbar-text">
+                    {{> loginButtons align="right"}}
+
+                </div>
+            </div>
+        </div>
+    </nav>
+</template>
+-->
+
+<template name="nav">
+    <!--
+  <nav>
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">
+            <h4>ComicsMart</h4>
+        </a>
+        <ul id="nav-mobile" class="right side-nav fixed">
+          <li class="{{isActiveRoute regex='home'}}"><a href="{{pathFor 'home'}}">Home</a></li>
+          <li class="{{isActiveRoute regex='private'}}"><a href="{{pathFor 'private'}}">Private</a></li>
+          <li>{{> atNavButton }}</li>
+        </ul>
+        <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
+      </div>
+    </div>
+  </nav>
+-->
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="{{pathFor 'home'}}" class="brand-logo"><h4>&nbsp;ComicsMart</h4></a>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul id="nav-main" data-activates="nav-moblie" class="right hide-on-med-and-down">
+                    <li class="{{isActiveRoute regex='home'}}"><a href="{{pathFor 'home'}}">Home</a></li>
+                    {{#if currentUser}}
+                        <li class="{{isActiveRoute regex='requests'}}"><a href="{{pathFor 'requests'}}">Requests</a></li>
+                    {{/if}}
+                    <li class="{{isActiveRoute regex='private'}}"><a href="{{pathFor 'private'}}">Private</a></li>
+                    {{#if currentUser}}
+                        <li><a href="{{pathFor 'private'}}">Only when logged in </a></li>
+                    {{/if}}
+                    <li class="{{isActiveRoute regex='collapsible'}}"><a href="collapsible.html">JavaScript</a></li>
+                    <li>{{> atNavButton }}</li>
+                </ul>
+                <ul class="side-nav hide-on-large-only" id="nav-mobile">
+                    <li class="{{isActiveRoute regex='home'}}"><a href="{{pathFor 'home'}}">Home</a></li>
+                    {{#if currentUser}}
+                        <li class="{{isActiveRoute regex='requests'}}"><a href="{{pathFor 'requests'}}">Requests</a></li>
+                    {{/if}}
+                    <li class="{{isActiveRoute regex='private'}}"><a href="{{pathFor 'private'}}">Private</a></li>
+                    {{#if currentUser}}
+                        <li><a href="{{pathFor 'private'}}">Only when logged in </a></li>
+                    {{/if}}
+                    <li class="{{isActiveRoute regex='collapsible'}}"><a href="collapsible.html">JavaScript</a></li>
+                    <li>{{> atNavButton }}</li>
+                </ul>
+            </div>
+        </nav>
+        </div>
+</template>
+
