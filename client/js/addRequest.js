@@ -37,6 +37,7 @@ Template.addRequest.helpers({
                 {
                     collection: Publishers,
                     field: "name",
+                    matchAll: true,
                     template: Template.publisher,
                     noMatchTemplate: Template.newPublisher
                 }
@@ -61,3 +62,11 @@ Template.addRequest.helpers({
         };
     }
 });
+
+Template.addRequest.rendered = function() {
+    $('#cancelAddRequest').click(function() {
+        AutoForm.resetForm('addRequest');
+        MaterializeModal.close();
+        Materialize.toast("Request cancelled", 1000);
+    });
+};

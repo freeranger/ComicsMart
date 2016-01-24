@@ -59,10 +59,10 @@ less@2.5.1
 livedata@1.0.15
 localstorage@1.0.5
 logging@1.0.8
-lukemadera:autoform-autocomplete@1.0.2
 mdg:validation-error@0.2.0
 meteor@1.1.10
 meteor-base@1.0.1
+meteorstuff:materialize-modal@1.0.6
 minifiers@1.1.7
 minimongo@1.0.10
 mizzao:autocomplete@0.5.1
@@ -74,7 +74,6 @@ mongo-id@1.0.1
 mpowaga:autoform-autocomplete@0.0.2
 mpowaga:string-template@0.1.0
 mrt:copy-template@0.9.0
-notorii:array@0.0.1
 npm-bcrypt@0.7.8_2
 npm-mongo@1.4.39_1
 observe-sequence@1.0.7
