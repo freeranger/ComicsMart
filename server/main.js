@@ -15,9 +15,4 @@ Meteor.startup(function () {
         Titles.insert( { name: 'Sandman', publisher: 'Vertigo' } );
     }
 
-    if (!Requests.findOne()){// no publishers
-        Requests.insert( { userId: 'xdG4nYCAs27DMXK2n', title: 'Sandman', publisher: 'Vertigo', type: 'Buy', minIssue: 1, maxIssue: 75, minGrade: 'VFN', maxGrade: 'Mint', fillType: 'Full', matches:[] } );
-        Requests.insert( { userId: 'xdG4nYCAs27DMXK2n', title: 'Amazing Spiderman', publisher: 'Marvel', type: 'Sell', minIssue: 24, maxIssue: 25, minGrade: 'NM', maxGrade: 'NM', fillType: 'Any', matches: [] } );
-    }
-
 });
