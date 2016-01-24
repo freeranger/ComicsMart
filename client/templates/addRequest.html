@@ -1,0 +1,43 @@
+<template name="addRequest">
+    {{#autoForm id="addRequest" collection="Requests" type="insert" schema=Schemas.Request class="col s12"}}
+        <fieldset>
+            <legend>Add a Buy/Sell Comics Request</legend>
+            <div class="row">
+                <div class="input-field col s3">
+                    {{> afFieldInput name="type" type="switch" defaultValue="Buy" trueValue="Sell" trueLabel="Sell" falseLabel="Buy" falseValue="Buy" }}
+                </div>
+                <div class="input-field col s3">
+                    {{> afQuickField name="fillType" type="select" options="allowed" defaultValue="Any" }}
+                </div>
+                <div class="input-field col s6">
+                    {{> afQuickField name="publisher" type="autocomplete-input" placeholder="Search for publishers..." autocomplete="off" settings=publisherSettings }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    {{> afQuickField name="title" type="autocomplete-input" placeholder="Search for titles..." autocomplete="off" settings=titleSettings }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s3">
+                    {{> afQuickField name="volume" defaultValue=1 }}
+                </div>
+                <div class="input-field col s4">
+                    {{> afQuickField name="minIssue" }}
+                </div>
+                <div class="input-field col s4">
+                    {{> afQuickField name="maxIssue" }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    {{> afQuickField name="minGrade" type="select" options=gradeList defaultValue=8.0}}
+                </div>
+                <div class="input-field col s6">
+                    {{> afQuickField name="maxGrade"  type="select" options=gradeList}}
+                </div>
+            </div>
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Add Request</button>
+    {{/autoForm}}
+</template>

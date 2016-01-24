@@ -27,3 +27,7 @@ Template.hello.events({
         Session.set('counter', Session.get('counter') + 1);
     }
 });
+
+Template.registerHelper('Schemas', function() {
+    return Schemas;
+});

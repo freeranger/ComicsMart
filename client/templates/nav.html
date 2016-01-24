@@ -60,6 +60,7 @@
                     <li class="{{isActiveRoute regex='home'}}"><a href="{{pathFor 'home'}}">Home</a></li>
                     {{#if currentUser}}
                         <li class="{{isActiveRoute regex='requests'}}"><a href="{{pathFor 'requests'}}">Requests</a></li>
+                        <li class="{{isActiveRoute regex='addRequest'}}"><a href="{{pathFor 'addRequest'}}">Add Request</a></li>
                     {{/if}}
                     <li class="{{isActiveRoute regex='private'}}"><a href="{{pathFor 'private'}}">Private</a></li>
                     {{#if currentUser}}
@@ -72,7 +73,7 @@
                     <li class="{{isActiveRoute regex='home'}}"><a href="{{pathFor 'home'}}">Home</a></li>
                     {{#if currentUser}}
                         <li class="{{isActiveRoute regex='requests'}}"><a href="{{pathFor 'requests'}}">Requests</a></li>
-                    {{/if}}
+                        <li class="{{isActiveRoute regex='addRequest'}}"><a href="{{pathFor 'addRequest'}}">Add Request</a></li>                    {{/if}}
                     <li class="{{isActiveRoute regex='private'}}"><a href="{{pathFor 'private'}}">Private</a></li>
                     {{#if currentUser}}
                         <li><a href="{{pathFor 'private'}}">Only when logged in </a></li>
