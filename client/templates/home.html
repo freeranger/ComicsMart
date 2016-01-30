@@ -1,24 +1,20 @@
 <template name="home">
     <div class="container">
         <div class="text-center">
-            <h1>Welcome to ComicsMart!</h1>
+            {{#unless currentUser}}
+                <h1>Welcome to ComicsMart!</h1>
+            <h4>What is ComicsMart?</h4>
             <p>
-                If you'd like to discover more about useraccounts packages for
-                <a href="https://www.meteor.com/">Meteor</a>, you can have a
-                <a href="https://atmospherejs.com/useraccounts">look at them on Atmosphere</a>
-                or at the
-                <a href="https://github.com/meteor-useraccounts/">meteor-useraccounts GitHub organization</a>
+                ComicsMart allows you to quickly and easily register your interest in buying or selling comics - whether it is a range of comics or a single issue,
+                ComicsMart makes it easy to match you up with other users who can meet your requirements.
             </p>
             <p>
-                Head instead to the
-                <a href="https://github.com/meteor-useraccounts/core/blob/master/Guide.md">Guide</a>
-                to read a bit of documentation, or lets have a look at the
-                <a href="https://github.com/meteor-useraccounts/boilerplates">boilerplates</a>
-                for a quick start!
+                Please sign in (or register) to view your list of requests and hopefully have some matches you can trade on!
             </p>
+            {{else}}
+                {{> summary}}
+            {{/unless}}
+
         </div>
-
-        {{> hello }}
-
     </div>
 </template>

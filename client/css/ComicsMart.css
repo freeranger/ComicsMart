@@ -69,3 +69,7 @@ footer {
         width: 98%;
     }
 }
+
+#mainContent {
+  padding:5px;
+}

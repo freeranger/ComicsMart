@@ -2,7 +2,9 @@
 
     <div id="content">
         {{> yield region='nav'}}
-        {{> yield}}
+        <div id="mainContent">
+            {{> yield}}
+        </div>
     </div>
     {{> yield region='footer'}}
 
