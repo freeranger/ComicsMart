@@ -3,6 +3,23 @@ Template.addRequest.helpers({
         return GradeList.sort(function(a, b) {  return b.value - a.value});
     },
 
+    publisherShouldBeDisabled: function () {
+        return false;
+    },
+
+    newRequest: function() {
+        AutoForm.resetForm('addRequest');
+        return {
+            type: 'Buy',
+            fillType: 'Any',
+            volume: 1,
+            minGrade: 8.0,
+            publisher:'',
+            title:'',
+            minIssue:''
+        }
+    },
+
     publisherSettings: function() {
         return {
             position: "top",
@@ -19,6 +36,7 @@ Template.addRequest.helpers({
             sort:true
         };
     },
+
     titleSettings: function() {
         return {
             position: "top",
@@ -44,3 +62,21 @@ Template.addRequest.rendered = function() {
         Materialize.toast("Request cancelled", 1000);
     });
 };
+
+
+Template.addRequest.events({
+    "autocompleteselect input": function(event, template, doc) {
+        if (this.name == 'title') {
+            var publisher = AutoForm.getFieldValue('publisher', 'addRequest');
+            $('#publisher').val(doc.publisher);
+            console.log('title:' + doc);
+        }
+        else {
+            console.log('pub:' + doc);
+        }
+    },
+
+    "autocompleteselect input title": function(event, template, doc) {
+        console.log("title eee", doc);
+    }
+});

@@ -1,14 +1,14 @@
 <template name="addRequest">
-    {{#autoForm id="addRequest" collection="Requests" type="insert" schema=Schemas.Request class="col s12"}}
+    {{#autoForm id="addRequest" name="addRequest" collection="Requests" type="insert" preserveForm="true" doc=newRequest schema=Schemas.Request class="col s12"}}
         <div class="row">
             <div class="input-field col s3">
-                {{> afFieldInput name="type" type="switch" defaultValue="Buy" trueValue="Sell" trueLabel="Sell" falseLabel="Buy" falseValue="Buy" }}
+                {{> afFieldInput name="type" type="switch" trueValue="Sell" trueLabel="Sell" falseLabel="Buy" falseValue="Buy" }}
             </div>
             <div class="input-field col s3">
-                {{> afQuickField name="fillType" type="select" options="allowed" defaultValue="Any" }}
+                {{> afQuickField name="fillType" type="select" options="allowed" }}
             </div>
             <div class="input-field col s6">
-                {{> afQuickField name="publisher" type="autocomplete-input" placeholder="Search for publishers..." autocomplete="off" settings=publisherSettings }}
+                {{> afQuickField name="publisher" id="publisher" type="autocomplete-input" disabled=publisherShouldBeDisabled placeholder="Search for publishers..." autocomplete="off" settings=publisherSettings }}
             </div>
         </div>
             <div class="input-field col s12">
@@ -16,7 +16,7 @@
             </div>
         <div class="row">
             <div class="input-field col s3">
-                {{> afQuickField name="volume" defaultValue=1 }}
+                {{> afQuickField name="volume" }}
             </div>
             <div class="input-field col s4">
                 {{> afQuickField name="minIssue" }}
@@ -27,7 +27,7 @@
         </div>
         <div class="row">
             <div class="input-field col s6">
-                {{> afQuickField name="minGrade" type="select" options=gradeList defaultValue=8.0}}
+                {{> afQuickField name="minGrade" type="select" options=gradeList}}
             </div>
             <div class="input-field col s6">
                 {{> afQuickField name="maxGrade"  type="select" options=gradeList}}

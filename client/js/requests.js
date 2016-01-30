@@ -12,6 +12,7 @@ Template.requests.rendered = function() {
   //  $(document).ready(function(){
         $('.js-addRequest').click(function() {
             AutoForm.resetForm('addRequest');
+
             MaterializeModal.display({
                 title: "Add a Request",
                 bodyTemplate: "addRequest",
@@ -75,8 +76,7 @@ AutoForm.addHooks(["addRequest"], {
 
     onError: function(operation, error, template) {
         // display error, reset form status
-        console.log(operation);
-        console.log("Error: CAPTCHA Validation failed!");
+        console.log('Error during ' + operation + ' - ' + error);
     }
 });
 

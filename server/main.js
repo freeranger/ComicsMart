@@ -1,6 +1,11 @@
 Meteor.startup(function () {
     // code to run on server at startup
 
+    Titles.rawCollection().createIndex( { name: 1, publisher: 1 }, function(error) {
+        if (error) {
+            console.log('Error Creating index: ' + error);
+        }});;
+
     if (!Publishers.findOne()){// no publishers
         Publishers.insert( { name: 'Marvel' } );
         Publishers.insert( { name: 'DC' } );
