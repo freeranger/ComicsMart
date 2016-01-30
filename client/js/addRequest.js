@@ -3,12 +3,7 @@ Template.addRequest.helpers({
         return GradeList.sort(function(a, b) {  return b.value - a.value});
     },
 
-    publisherShouldBeDisabled: function () {
-        return false;
-    },
-
     newRequest: function() {
-        AutoForm.resetForm('addRequest');
         return {
             type: 'Buy',
             fillType: 'Any',
@@ -57,7 +52,6 @@ Template.addRequest.helpers({
 
 Template.addRequest.rendered = function() {
     $('#cancelAddRequest').click(function() {
-        AutoForm.resetForm('addRequest');
         MaterializeModal.close();
         Materialize.toast("Request cancelled", 1000);
     });

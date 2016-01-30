@@ -12,7 +12,6 @@ Template.requests.rendered = function() {
   //  $(document).ready(function(){
         $('.js-addRequest').click(function() {
             AutoForm.resetForm('addRequest');
-
             MaterializeModal.display({
                 title: "Add a Request",
                 bodyTemplate: "addRequest",
