@@ -14,5 +14,4 @@ Meteor.startup(function () {
         Titles.insert( { name: 'Amazing Spiderman', publisher: 'Marvel' } );
         Titles.insert( { name: 'Sandman', publisher: 'Vertigo' } );
     }
-
 });

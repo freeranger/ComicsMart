@@ -6,7 +6,7 @@
             <th data-field="type">Buy/Sell</th>
             <th data-field="publisher">Publisher</th>
             <th data-field="title">Title</th>
-            <th data-field="volume">Volume(s)</th>
+            <th data-field="volume">Volume</th>
             <th data-field="issue">Issue(s)</th>
             <th data-field="grade">Grade(s)</th>
             <th data-field="matches">Matches</th>
@@ -20,8 +20,8 @@
                     <td>{{publisher}}</td>
                     <td>{{title}}</td>
                     <td>{{volume}}</td>
-                    <td>{{minIssue}}-{{maxIssue}}</td>
-                    <td>{{minGrade}}-{{maxGrade}}</td>
+                    <td>{{minIssue}}{{#if $neq minIssue maxIssue}}-{{maxIssue}}{{/if}}</td>
+                    <td>{{ gradeShortName minGrade}}{{#if $neq minGrade maxGrade}}-{{ gradeShortName maxGrade}}{{/if}}</td>
                     <td>{{matches.length}}</td>
                 </tr>
             {{/each}}

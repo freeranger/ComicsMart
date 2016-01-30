@@ -2,6 +2,9 @@ Template.requests.helpers({
     // find all visible docs
     requestList:function(){
         return Requests.find({ userId: Meteor.userId(), isActive: true }, {sort: {title: 1, minIssue:1}});
+    },
+    gradeShortName: function(grade) {
+        return GradeList.find(function(g) {  return g.value == grade }).name;
     }
 });
 
