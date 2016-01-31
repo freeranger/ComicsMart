@@ -11,7 +11,7 @@ Template.addRequest.helpers({
             minGrade: 8.0,
             publisher:'',
             title:'',
-            minIssue:''
+            minIssue:1
         }
     },
 
@@ -51,8 +51,11 @@ Template.addRequest.helpers({
 });
 
 Template.addRequest.rendered = function() {
-    $('#cancelAddRequest').click(function() {
-        MaterializeModal.close();
+    $('#cancelAddRequest').click(function(event) {
+        event.preventDefault();
+        MaterializeModal.close(false);
+        Session.set('addRequestCancelled', true);
+        AutoForm.resetForm('addRequest');
         Materialize.toast("Request cancelled", 1000);
     });
 };

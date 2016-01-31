@@ -1,7 +1,17 @@
 @import "{poetic:materialize-scss}/sass/components/_color.scss";
+@import "{poetic:materialize-scss}/sass/components/_variables.scss";
+
 $primary-color: #2053ab;
 $secondary-color: color("blue", "darken-2");
+$footer-bg-color: color("blue", "darken-1");
+
+// $button-color-raised: color("blue", "darken-2");
 
 $small-screen: 600px !default;
 $medium-screen: 992px !default;
 $large-screen: 1200px !default;
+$dropdown-item-height: 15px;
+
+// small buttons
+$button-small-icon-font-size: 1rem !default;
+$button-small-height: $button-height * 0.5 !default;

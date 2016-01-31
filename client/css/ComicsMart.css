@@ -53,11 +53,12 @@ footer {
     width: 100%;
 }
 
+/*
 .modal-footer {
     height: 0px;
     display:none;
 }
-
+*/
 @media only screen and (min-width: 601px) {
     .container {
         width: 99%;
