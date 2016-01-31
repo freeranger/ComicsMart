@@ -33,3 +33,6 @@ mpowaga:autoform-autocomplete
 meteorstuff:materialize-modal
 raix:handlebar-helpers
 matb33:collection-hooks
+accounts-google
+accounts-facebook
+accounts-github
