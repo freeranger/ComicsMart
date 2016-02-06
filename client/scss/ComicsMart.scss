@@ -14,10 +14,28 @@
   }
 }
 
+.modal-content .card-panel {
+  padding:0px;
+}
+
+.modal-content .card-title {
+  background-color: $primary-color;
+  color:white;
+  padding:5px;
+  font-size: 1.25em;
+}
+
 .modal-content .row {
   margin-bottom:0px;
 }
 
+.modal-content .row .col {
+  padding-left: 0px;
+}
+
+.modal-content  table {
+  line-height: 1;
+}
 /*
 .row input {
   margin-bottom: 5px;
@@ -66,9 +84,3 @@ textarea.materialize-textarea {
 .modal{
   overflow-y: visible;
 }
-/*
-.input-field {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-*/

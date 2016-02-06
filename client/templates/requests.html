@@ -30,8 +30,8 @@
                     <td>{{title}}</td>
                     <td>{{volume}}</td>
                     <td>{{minIssue}}{{#if $neq minIssue maxIssue}}-{{maxIssue}}{{/if}}</td>
-                    <td>{{ gradeShortName minGrade}}{{#if $neq minGrade maxGrade}}-{{ gradeShortName maxGrade}}{{/if}}</td>
-                    <td>{{matches.length}}</td>
+                    <td>{{ getGradeName minGrade}}{{#if $neq minGrade maxGrade}}-{{ getGradeName maxGrade}}{{/if}}</td>
+                    <td><a data-id="{{_id}}" class="js-openRequest" style="cursor:pointer">{{matches.length}}</a></td>
                 </tr>
             {{/each}}
         </tbody>

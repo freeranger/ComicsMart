@@ -7,9 +7,6 @@ Template.requests.helpers({
     requestList:function(){
         return Requests.find({ userId: Meteor.userId(), isActive: true }, {sort: {title: 1, minIssue:1}});
     },
-    gradeShortName: function(grade) {
-        return GradeList.find(function(g) {  return g.value == grade }).name;
-    },
     setCancelled: function() {
         addRequestCancelled = true;
     },
@@ -19,12 +16,12 @@ Template.requests.helpers({
 });
 
 Template.requests.rendered = function() {
-  //  $(document).ready(function(){
         $('.js-addRequest').click(function() {
             AutoForm.resetForm('addRequest');
             Session.set('addRequestCancelled', false);
+            Session.set('showDelete', false);
             MaterializeModal.display({
-                title: null, //"Add a Request",
+                title: null,
                 bodyTemplate: "addRequest",
                 submitLabel: null,
                 closeLabel: null,
@@ -52,11 +49,20 @@ Template.requests.rendered = function() {
             }
         });
 
-        // alert('are you sure?');
+    });
+
+    $('.js-requests').on('click', '.js-openRequest', function(target) {
+        var target = $(target.currentTarget);
+        var id = target.data('id');
+        MaterializeModal.display({
+            title: null,
+            closeLabel: '<i class="material-icons left red-text">exit_to_app</i> Close',
+            bodyTemplate: "displayRequest",
+            request: Requests.findOne({ _id: id})
+        });
     });
 
     $('.tooltipped').tooltip({delay: 200});
-   // });
 }
 
 AutoForm.addHooks(["addRequest"], {
