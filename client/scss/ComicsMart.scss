@@ -36,6 +36,16 @@
 .modal-content  table {
   line-height: 1;
 }
+
+.modal-content table th {
+  padding-top:10px;
+  padding-bottom:10px;
+}
+.modal-content table td {
+  padding-top:5px;
+  padding-bottom:5px;
+}
+
 /*
 .row input {
   margin-bottom: 5px;
@@ -83,4 +93,10 @@ textarea.materialize-textarea {
 
 .modal{
   overflow-y: visible;
+}
+
+.footnote {
+  color: $footnote-color;
+  font-size: 0.75em;
+  margin-top:5px;
 }

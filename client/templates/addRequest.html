@@ -4,17 +4,15 @@
             <div class="col s8">
                 <h4 class="modal-title">Add a Request</h4>
             </div>
-            <div class="input-field col s4">
-                {{> afFieldInput name="type" type="switch" trueValue="Sell" trueLabel="Sell" falseLabel="Buy" falseValue="Buy" }}
-            </div>
         </div>
         <div class="row">
-
-            <div class="input-field col s12 m4">
-                {{> afQuickField name="fillType" id="fillType" label="Type" type="select" options="allowed" }}
-            </div>
-            <div class="input-field col s12 m8">
+            <div class="input-field col s8">
                 {{> afQuickField name="publisher" id="publisher" type="autocomplete-input" placeholder="Search for publishers..." autocomplete="off" settings=publisherSettings }}
+            </div>
+            <div class="input-field col s4">
+                <div class="right">
+                {{> afFieldInput name="type" type="switch" trueValue="Sell" trueLabel="Sell" falseLabel="Buy" falseValue="Buy" }}
+                    </div>
             </div>
         </div>
         <div class="row">
@@ -42,8 +40,11 @@
             </div>
         </div>
 
-        <button type="submit" class="btn waves-effect waves-light "><i class="material-icons left">done</i>Add Request</button>
-        <button id="cancelAddRequest" class="btn red waves-effect waves-light"><i class="material-icons left">exit_to_app</i>Cancel</button>
-
+        <div class="row">
+            <span class="right">
+            <button type="submit" class="btn waves-effect waves-light "><i class="material-icons left">done</i>Add Request</button>
+            <button id="cancelAddRequest" class="btn red waves-effect waves-light"><i class="material-icons left">exit_to_app</i>Cancel</button>
+            </span>
+        </div>
     {{/autoForm}}
 </template>

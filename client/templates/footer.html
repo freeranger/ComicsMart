@@ -1,7 +1,17 @@
 <template name="footer">
     <footer class="page-footer">
-        <div class="container white-text">
-            The smart way to trade your Comics!
+        <div class="row white-text">
+            <div class="col s12 m9 center">
+                The smart way to trade your Comics!
+            </div>
+            <div class="col m3 hide-on-small-and-down">
+                <div class="right footnote">
+                    {{#if currentUser}}
+                        <i>@{{currentUser.username}}</i>
+                    {{/if}}
+                </div>
+            </div>
         </div>
+
     </footer>
 </template>

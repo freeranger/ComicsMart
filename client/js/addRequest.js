@@ -6,7 +6,6 @@ Template.addRequest.helpers({
     newRequest: function() {
         return {
             type: 'Buy',
-            fillType: 'Any',
             volume: 1,
             minGrade: 8.0,
             publisher:'',

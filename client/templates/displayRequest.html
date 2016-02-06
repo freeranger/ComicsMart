@@ -1,11 +1,10 @@
 <template name="displayRequest">
     <div class="modal-header">
         <h4 class="modal-title">{{request.type}} Request - {{request.title}}</h4>
-
     </div>
-    <section>
+    <section class="js-request" data-id="{{request._id}}">
         <div class="row">
-            <div class="col s6">
+            <div class="col s4">
                 <b>Publisher:</b> {{request.publisher}}
             </div>
             <div class="col s2">
@@ -14,38 +13,37 @@
             <div class="col s2">
                 <b>Issue(s):</b> {{request.minIssue}}{{#if $neq request.minIssue request.maxIssue}}-{{request.maxIssue}}{{/if}}
             </div>
-            <div class="col s2">
-                <b>Grade(s):</b> {{ getGradeName request.minGrade}}{{#if $neq request.minGrade request.maxGrade}}-{{ getGradeName request.maxGrade}}{{/if}}
+            <div class="col s4">
+                <b>Grade(s):</b> {{ getGradeLabel request.minGrade}}{{#if $neq request.minGrade request.maxGrade}}-{{ getGradeLabel request.maxGrade}}{{/if}}
             </div>
         </div>
         <br/>
         <div class="card-panel">
-        <div class="card-title">Matches</div>
-
-        <table class="highlight responsive-table js-requests">
-            <thead>
-            <tr>
-                <th data-field="userId">User</th>
-                <th data-field="issue">Issue(s)</th>
-                <th data-field="grade">Grade(s)</th>
-                <th class="right">Action</th>
-            </tr>
-            </thead>
-
-            <tbody>
-            {{#each matchList request._id }}
+            <div class="card-title">Matches</div>
+            <table class="highlight responsive-table js-requests">
+                <thead>
                 <tr>
-                    <td>{{getUsername userId}}</td>
-                    <td>{{minIssue}}{{#if $neq minIssue maxIssue}}-{{maxIssue}}{{/if}}</td>
-                    <td>{{ getGradeName minGrade}}{{#if $neq minGrade maxGrade}}-{{ getGradeName maxGrade}}{{/if}}</td>
-                    <td class="right">
-                        <a class="waves-effect waves-light red btn-floating z-depth-1 tooltipped" style="margin-right:10px" data-tooltip="Not interested"><i class="material-icons">thumb_down</i></a>
-                        <a class="waves-effect waves-light blue btn-floating z-depth-1 tooltipped" data-tooltip="Chat to {{getUsername userId}}"><i class="material-icons">chat</i></a>
-                    </td>
+                    <th data-field="userId">User</th>
+                    <th data-field="issue">Issue(s)</th>
+                    <th data-field="grade">Grade(s)</th>
+                    <th class="right" style="margin-right:10px">Action</th>
                 </tr>
-            {{/each}}
-            </tbody>
-        </table>
+                </thead>
+
+                <tbody>
+                    {{#each matchList request._id }}
+                        <tr>
+                            <td>@{{getUsername userId}}</td>
+                            <td>{{minIssue}}{{#if $neq minIssue maxIssue}}-{{maxIssue}}{{/if}}</td>
+                            <td>{{ getGradeLabel minGrade}}{{#if $neq minGrade maxGrade}}-{{ getGradeLabel maxGrade}}{{/if}}</td>
+                            <td class="right">
+                                <a class="waves-effect waves-light red btn-floating z-depth-1 tooltipped js-notInterested" data-id="{{_id}}" style="margin-right:10px" data-tooltip="Not interested"><i class="material-icons">thumb_down</i></a>
+                                <a class="waves-effect waves-light blue btn-floating z-depth-1 tooltipped js-Chat" data-id="{{_id}}" data-tooltip="Chat to @{{getUsername userId}}"><i class="material-icons">chat</i></a>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
         </div>
     </section>
 </template>

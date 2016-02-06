@@ -33,8 +33,8 @@ footer > .content {
 }
 
 header,
-main,
-footer {
+main
+{
     padding-left: 240px;
 }
 

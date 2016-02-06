@@ -5,7 +5,10 @@ Session.set('showDelete', false);
 Template.requests.helpers({
     // find all visible docs
     requestList:function(){
-        return Requests.find({ userId: Meteor.userId(), isActive: true }, {sort: {title: 1, minIssue:1}});
+        Meteor.call('getRequests', function(error, result) {
+            Session.set('myRequests', result)
+        });
+        return Session.get('myRequests');
     },
     setCancelled: function() {
         addRequestCancelled = true;
@@ -16,22 +19,22 @@ Template.requests.helpers({
 });
 
 Template.requests.rendered = function() {
-        $('.js-addRequest').click(function() {
-            AutoForm.resetForm('addRequest');
-            Session.set('addRequestCancelled', false);
-            Session.set('showDelete', false);
-            MaterializeModal.display({
-                title: null,
-                bodyTemplate: "addRequest",
-                submitLabel: null,
-                closeLabel: null,
-                footerTemplate: '<div style="display:none"'
-            });
+    $('.js-addRequest').click(function() {
+        AutoForm.resetForm('addRequest');
+        Session.set('addRequestCancelled', false);
+        Session.set('showDelete', false);
+        MaterializeModal.display({
+            title: null,
+            bodyTemplate: "addRequest",
+            submitLabel: null,
+            closeLabel: null,
+            footerTemplate: '<div style="display:none"'
         });
+    });
 
-        $('.js-toggleRemoveRequests').click(function() {
-            Session.set('showDelete', !Session.get('showDelete'));
-        });
+    $('.js-toggleRemoveRequests').click(function() {
+        Session.set('showDelete', !Session.get('showDelete'));
+    });
 
     $('.js-requests').on('click', '.js-removeRequest', function(target) {
         var target = $(target.currentTarget);
@@ -41,14 +44,13 @@ Template.requests.rendered = function() {
             message: "Are you sure you want to delete this request for " +  target.data('title') + "?",
             callback: function(error, response) {
                 if (response.submit) {
-                    Requests.remove({_id:id});
+                    Requests.remove({_id: id});
                     Materialize.toast("Request Deleted!", 750, "black");
                 } else {
                     Materialize.toast("Delete Cancelled", 750, "black");
                 }
             }
         });
-
     });
 
     $('.js-requests').on('click', '.js-openRequest', function(target) {
@@ -58,7 +60,11 @@ Template.requests.rendered = function() {
             title: null,
             closeLabel: '<i class="material-icons left red-text">exit_to_app</i> Close',
             bodyTemplate: "displayRequest",
-            request: Requests.findOne({ _id: id})
+            request: Requests.findOne({ _id: id}),
+            callback: function(error, response) {
+                // Remove the tooltips on the modal incase they cause problems
+               $('.modal-body .tooltipped').tooltip('remove');
+            }
         });
     });
 
@@ -77,7 +83,7 @@ AutoForm.addHooks(["addRequest"], {
         console.log('operation: ' + operation + ' result:' + result)
         MaterializeModal.close();
         Materialize.toast("Request added", 1000);
-       // console.log("CAPTCHA Validation Success! Email Sent!");
+
     },
 
     onError: function(operation, error, template) {
