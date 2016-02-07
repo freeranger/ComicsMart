@@ -85,7 +85,7 @@ Meteor.startup(function () {
         var request2 = Requests.insert({ userId: user3, type: 'Buy', title: 'Miracleman', publisher: 'Eclipse Comics', volume:1, minIssue: 9, maxIssue: 12, minGrade: 6.0, maxGrade:8.0, isActive: true});
 
         var msgs = [];
-        msgs.push({userId: user2, text: "Hi, I'm interested in buying yout Miracleman - how much is it?"});
+        msgs.push({userId: user3, text: "Hi, I'm interested in buying yout Miracleman - how much is it?"});
         msgs.push({userId: user1, text: "How much you got? :)"});
         var chatId = Chats.insert({isActive: true, userId1: user1, userId2: user3, messages: msgs});
 
