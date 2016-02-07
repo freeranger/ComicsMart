@@ -1,0 +1,23 @@
+<template name="chats">
+    <b>Open Chats</b>
+    <button class="btn btn-floating waves-effect waves-light js-toggleRemoveRequests tooltipped z-depth-2 right red" data-tooltip="Delete Requests" style="margin-right:10px"><i class="material-icons">delete</i></button>
+    <table class="highlight responsive-table js-chats">
+        <thead>
+        <tr>
+            {{#if shouldShowDelete}}
+                <th></th>
+            {{/if}}
+            <th data-field="type">Buy/Sell</th>
+            <th data-field="publisher">Publisher</th>
+            <th data-field="title">Title</th>
+            <th data-field="volume">Volume</th>
+            <th data-field="issue">Issue(s)</th>
+            <th data-field="grade">Grade(s)</th>
+            <th data-field="user">User</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+    </table>
+</template>

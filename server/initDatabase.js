@@ -70,7 +70,7 @@ Meteor.startup(function () {
 
     // Add sample requests
     if (!Requests.findOne()) {
-        Requests.insert({ userId: user1, type: 'Sell', title: 'Miracleman', publisher: 'Eclipse Comics', volume:1, minIssue: 9, maxIssue: 9, minGrade: 2.0, maxGrade:9.4, isActive: true});
+        var request1 = Requests.insert({ userId: user1, type: 'Sell', title: 'Miracleman', publisher: 'Eclipse Comics', volume:1, minIssue: 9, maxIssue: 9, minGrade: 2.0, maxGrade:9.4, isActive: true});
         Requests.insert({ userId: freeranger, type: 'Sell', title: 'Amazing Spiderman', publisher: 'Marvel', volume:1, minIssue: 1, maxIssue: 10, minGrade: 4.0, maxGrade:8.0, isActive: true});
         Requests.insert({ userId: freeranger, type: 'Sell', title: 'Saga', publisher: 'Image Comics', volume:1, minIssue: 1, maxIssue: 15, minGrade: 8.0, maxGrade:9.9, isActive: true});
         Requests.insert({ userId: freeranger, type: 'Buy', title: 'Detective Comics', publisher: 'DC', volume:1, minIssue: 20, maxIssue: 40, minGrade: 0.5, maxGrade:8.0, isActive: true});
@@ -82,7 +82,16 @@ Meteor.startup(function () {
         Requests.insert({ userId: user2, type: 'Sell', title: 'Detective Comics', publisher: 'DC', volume:1, minIssue: 27, maxIssue: 27, minGrade: 8.0, maxGrade:8.0, isActive: true});
         Requests.insert({ userId: user2, type: 'Sell', title: 'Amazing Spiderman', publisher: 'Marvel', volume:2, minIssue: 1, maxIssue: 10, minGrade: 4.0, maxGrade:8.0, isActive: true});
         Requests.insert({ userId: user2, type: 'Buy', title: 'Miracleman', publisher: 'Eclipse Comics', volume:1, minIssue: 4, maxIssue: 9, minGrade: 1.0, maxGrade:9.4, isActive: true});
-        Requests.insert({ userId: user3, type: 'Buy', title: 'Miracleman', publisher: 'Eclipse Comics', volume:1, minIssue: 9, maxIssue: 12, minGrade: 6.0, maxGrade:8.0, isActive: true});
+        var request2 = Requests.insert({ userId: user3, type: 'Buy', title: 'Miracleman', publisher: 'Eclipse Comics', volume:1, minIssue: 9, maxIssue: 12, minGrade: 6.0, maxGrade:8.0, isActive: true});
+
+        var msgs = [];
+        msgs.push({userId: user2, text: "Hi, I'm interested in buying yout Miracleman - how much is it?"});
+        msgs.push({userId: user1, text: "How much you got? :)"});
+        var chatId = Chats.insert({isActive: true, userId1: user1, userId2: user3, messages: msgs});
+
+
+        Requests.update({ _id: request1, "matches.requestId": request2}, { $set: { "matches.$.chatId": chatId }});
+        Requests.update({ _id: request2, "matches.requestId": request1}, { $set: { "matches.$.chatId": chatId }});
 
     }
 });

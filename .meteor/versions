@@ -67,6 +67,7 @@ livedata@1.0.15
 localstorage@1.0.5
 logging@1.0.8
 matb33:collection-hooks@0.8.1
+mattimo:emoticons@0.0.4
 mdg:validation-error@0.2.0
 meteor@1.1.10
 meteor-base@1.0.1
@@ -87,6 +88,7 @@ npm-mongo@1.4.39_1
 oauth@1.1.6
 oauth2@1.1.5
 observe-sequence@1.0.7
+ogourment:settings@0.1.4
 ordered-dict@1.0.4
 poetic:materialize-scss@1.97.3_2
 promise@0.5.1

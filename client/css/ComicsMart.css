@@ -74,3 +74,11 @@ main
 #mainContent {
   padding:5px;
 }
+
+.text-italic {
+    font-style: italic;
+}
+
+.text-bold {
+    font-weight: bold;
+}

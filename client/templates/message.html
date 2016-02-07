@@ -1,0 +1,6 @@
+<template name="message">
+    <span style="width:40px">
+        <span class="text-italic {{getUserClass userId}}">@{{ getUserDisplayName userId}}:</span> {{{parseEmoticons text}}}
+    </span>
+    <br>
+</template>

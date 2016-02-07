@@ -59,7 +59,6 @@ Template.addRequest.rendered = function() {
     });
 };
 
-
 Template.addRequest.events({
     "autocompleteselect input": function(event, template, doc) {
         if (this.name == 'title') {
