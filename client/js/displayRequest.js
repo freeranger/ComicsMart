@@ -10,7 +10,7 @@ Template.displayRequest.rendered = function() {
         var target = $(target.currentTarget);
         var requestId = target.closest('.js-request').data('id');
         var id = target.data('id');
-        target.tooltip('remove');
+        target.tooltip('remove');   // Take the tooltip off this button before we remove the item (and thus the row)
         Meteor.call('removeRequestReference', requestId, id);
         Materialize.toast("Match ignored!", 750, "black");
     });
