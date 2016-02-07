@@ -1,6 +1,6 @@
 <template name="chats">
     <b>Open Chats</b>
-    <button class="btn btn-floating waves-effect waves-light js-toggleRemoveRequests tooltipped z-depth-2 right red" data-tooltip="Delete Requests" style="margin-right:10px"><i class="material-icons">delete</i></button>
+    <button class="btn btn-floating waves-effect waves-light js-toggleRemoveRequests tooltipped z-depth-2 right red" data-tooltip="Delete Chats" style="margin-right:10px"><i class="material-icons">delete</i></button>
     <table class="highlight responsive-table js-chats">
         <thead>
         <tr>
@@ -13,11 +13,29 @@
             <th data-field="volume">Volume</th>
             <th data-field="issue">Issue(s)</th>
             <th data-field="grade">Grade(s)</th>
-            <th data-field="user">User</th>
+            <th  class="right" data-field="user">User</th>
         </tr>
         </thead>
-
         <tbody>
+        {{#each requestList}}
+            {{#each chatList matches }}
+                <tr>
+                    {{#if shouldShowDelete}}
+                        <td><button class="btn btn-floating btn-small waves-effect waves-light js-removeRequest z-depth-2 tooltipped red" data-id="{{../_id}}" data-title="{{../title}}" data-tooltip="Delete this Request"><i class="material-icons">remove</i></button>
+                        </td>
+                    {{/if}}
+                    <td>{{../type}}</td>
+                    <td>{{../publisher}}</td>
+                    <td>{{../title}}</td>
+                    <td>{{../volume}}</td>
+                    <td>{{../minIssue}}{{#if $neq ../minIssue ../maxIssue}}-{{../maxIssue}}{{/if}}</td>
+                    <td>{{ getGradeLabel ../minGrade}}{{#if $neq ../minGrade ../maxGrade}}-{{ getGradeLabel ../maxGrade}}{{/if}}</td>
+                    <td class="right">
+                        <a class="btn waves-effect waves-light blue js-Chat" style="text-transform: none;" href="/chats/{{chatId}}"><i class="material-icons right">chat</i>@{{getUsername userId}}</a>
+                    </td>
+                </tr>
+            {{/each}}
+        {{/each}}
         </tbody>
     </table>
 </template>

@@ -8,6 +8,7 @@
                     <li class="{{isActiveRoute regex='home'}}"><a href="{{pathFor 'home'}}">Home</a></li>
                     {{#if currentUser}}
                         <li class="{{isActiveRoute regex='requests'}}"><a href="{{pathFor 'requests'}}">Requests</a></li>
+                        <li class="{{isActiveRoute regex='chats'}}"><a href="{{pathFor 'chats'}}">Chats</a></li>
                     {{/if}}
                     <li>{{> atNavButton }}</li>
                 </ul>
@@ -15,6 +16,7 @@
                     <li class="{{isActiveRoute regex='home'}}"><a href="{{pathFor 'home'}}">Home</a></li>
                     {{#if currentUser}}
                         <li class="{{isActiveRoute regex='requests'}}"><a href="{{pathFor 'requests'}}">Requests</a></li>
+                        <li class="{{isActiveRoute regex='chats'}}"><a href="{{pathFor 'chats'}}">Chats</a></li>
                     {{/if}}
                     <li>{{> atNavButton }}</li>
                 </ul>

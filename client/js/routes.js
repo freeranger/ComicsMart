@@ -28,8 +28,12 @@ Router.map(function() {
         path: '/requests'
     });
 
+    this.route('chats', {
+       path: '/chats'
+    });
+
     this.route('chat', {
-        path: '/chat/:_id?',
+        path: '/chats/:_id',
         data: function (){
             var chatId = this.params._id;
             Session.set("chatId", chatId);

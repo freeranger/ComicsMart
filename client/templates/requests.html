@@ -14,7 +14,7 @@
             <th data-field="volume">Volume</th>
             <th data-field="issue">Issue(s)</th>
             <th data-field="grade">Grade(s)</th>
-            <th data-field="matches">Matches</th>
+            <th class="right" data-field="matches">Matches</th>
         </tr>
         </thead>
 
@@ -31,7 +31,7 @@
                     <td>{{volume}}</td>
                     <td>{{minIssue}}{{#if $neq minIssue maxIssue}}-{{maxIssue}}{{/if}}</td>
                     <td>{{ getGradeLabel minGrade}}{{#if $neq minGrade maxGrade}}-{{ getGradeLabel maxGrade}}{{/if}}</td>
-                    <td>{{#if $gt matches.length 0}} <a data-id="{{_id}}" class="btn btn-floating waves-effect waves-light js-openRequest">{{matches.length}}</a>{{/if}}</td>
+                    <td class="right">{{#if $gt matches.length 0}} <a data-id="{{_id}}" class="btn btn-floating waves-effect waves-light js-openRequest">{{matches.length}}</a>{{/if}}</td>
                 </tr>
             {{/each}}
         </tbody>

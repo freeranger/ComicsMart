@@ -46,7 +46,7 @@ Template.displayRequest.rendered = function() {
             Session.set('chatId', chatId);
         }
         MaterializeModal.close(false);
-        Router.go('/chat/' + chatId);
+        Router.go('/chats/' + chatId);
     });
 
     $('.modal-body .tooltipped').tooltip({delay: 500});
