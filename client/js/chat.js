@@ -9,8 +9,10 @@ Template.chat.events({
     'submit .js-send-chat':function(event){
         // stop the form from triggering a page reload
         event.preventDefault();
-        Meteor.call('addMessage', Session.get("chatId"), event.target.chat.value);
-        // reset the form
-        event.target.chat.value = '';
+        if (event.target.chat.value.trim() !== '') {
+            Meteor.call('addMessage', Session.get("chatId"), event.target.chat.value);
+            // reset the form
+            event.target.chat.value = '';
+        }
     }
 })
