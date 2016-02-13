@@ -1,6 +1,6 @@
 <template name="chats">
     <b>Open Chats</b>
-    <button class="btn btn-floating waves-effect waves-light js-toggleRemoveRequests tooltipped z-depth-2 right red" data-tooltip="Delete Chats" style="margin-right:10px"><i class="material-icons">delete</i></button>
+    <button class="btn btn-floating waves-effect waves-light js-toggleRemoveChats tooltipped z-depth-2 right red" data-tooltip="Delete Chats" style="margin-right:10px"><i class="material-icons">delete</i></button>
     <table class="highlight responsive-table js-chats">
         <thead>
         <tr>
@@ -21,7 +21,7 @@
             {{#each chatList matches }}
                 <tr>
                     {{#if shouldShowDelete}}
-                        <td><button class="btn btn-floating btn-small waves-effect waves-light js-removeRequest z-depth-2 tooltipped red" data-id="{{../_id}}" data-title="{{../title}}" data-tooltip="Delete this Request"><i class="material-icons">remove</i></button>
+                        <td><button class="btn btn-floating btn-small waves-effect waves-light js-removeChat z-depth-2 tooltipped red" data-id="{{chatId}}" data-title="{{../title}}" data-userid="{{userId}}" data-username="@{{getUsername userId}}" data-tooltip="Delete this Chat with @{{getUsername userId}}"><i class="material-icons">remove</i></button>
                         </td>
                     {{/if}}
                     <td>{{../type}}</td>

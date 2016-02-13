@@ -41,12 +41,12 @@ Template.displayRequest.rendered = function() {
             var otherUserId = target.data('otheruserid');
             var requestId = target.closest('.js-request').data('id');
             var otherRequestId = target.data('id');
-            var chatId = Chats.insert({isActive: true, userId1: Meteor.userId(), userId2: otherUserId, messages: []});
-            Meteor.call('addChatToRequests', chatId, requestId, otherRequestId);
-            Session.set('chatId', chatId);
+            Meteor.call('createChat', requestId, otherRequestId, otherUserId, function(error, chatId) {
+                Session.set('chatId', chatId);
+                Router.go('/chats/' + chatId);
+            });
         }
         MaterializeModal.close(false);
-        Router.go('/chats/' + chatId);
     });
 
     $('.modal-body .tooltipped').tooltip({delay: 500});
