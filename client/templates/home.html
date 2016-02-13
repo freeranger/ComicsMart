@@ -1,20 +1,42 @@
 <template name="home">
     <div class="container">
         <div class="text-center">
-            {{#unless currentUser}}
                 <h1>Welcome to ComicsMart!</h1>
             <h4>What is ComicsMart?</h4>
             <p>
                 ComicsMart allows you to quickly and easily register your interest in buying or selling comics - whether it is a range of comics or a single issue,
                 ComicsMart makes it easy to match you up with other users who can meet your requirements.
             </p>
+            {{#unless currentUser}}
             <p>
                 Please sign in (or register) to view your list of requests and hopefully have some matches you can trade on!
             </p>
-            {{else}}
-                {{> summary}}
             {{/unless}}
 
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="card-title">
+                        Current Activity across ComicsMart
+                    </div>
+                    <div class="card-panel">
+                        <div class="row">
+                            {{ totalChatCount }} Chats discussing {{ totalMatches}} matches across {{ totalRequestCount}} requests
+                        </div>
+                    </div>
+                </div>
+                {{#if currentUser}}
+                    <div class="col s12 m6">
+                        <div class="card-title">
+                            Your Activity in ComicsMart
+                        </div>
+                        <div class="card-panel">
+                            <div class="row">
+                                <a href="{{pathFor 'chats'}}">{{ myChatCount }} Chats</a> discussing {{ myMatchCount}} matches across <a href="{{pathFor 'requests'}}">{{ myRequestCount }} requests</a>
+                            </div>
+                        </div>
+                    </div>
+                {{/if}}
+            </div>
         </div>
     </div>
 </template>

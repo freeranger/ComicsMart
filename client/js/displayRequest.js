@@ -35,6 +35,9 @@ Template.displayRequest.rendered = function() {
             var otherRequestId = target.data('id');
             Meteor.call('createChat', requestId, otherRequestId, otherUserId, function(error, chatId) {
                 Session.set('chatId', chatId);
+                Meteor.call("countChats", function(error, count) {
+                    Session.set('totalChats', count);
+                })
                 Router.go('/chats/' + chatId);
             });
         }

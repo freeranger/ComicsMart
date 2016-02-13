@@ -18,3 +18,7 @@ Template.registerHelper('getUsername', function(userId){
 Template.registerHelper('toLowerCase', function(str) {
     return str.toLowerCase();
 });
+
+Template.registerHelper('myRequestList', function(){
+    return Requests.find({ userId: Meteor.userId(), isActive: true }, {sort: {title: 1, minIssue:1}});
+});
