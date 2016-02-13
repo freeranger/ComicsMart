@@ -1,19 +1,11 @@
 Template.displayRequest.helpers({
     // find all visible docs
     matchList: function(requestId){
-        return Requests.find({"matches.requestId": requestId }, {sort: {title: 1, minIssue:1}}).map(function (m) {m.requestId = requestId; return m;});
+        Meteor.call('getMatchingRequests', requestId, function(error, result) {
+                Session.set('matchList', result)
+            });
+            return Session.get('matchList');
     },
-    /*
-    getChatLink: function(requestId, otherUserId, matches) {
-        var match = $.grep(matches, function(e){ return e.requestId == requestId; })[0];
-        if(match.chatId) {
-            return '/chat/' + match.chatId;
-        }
-        else {
-            return '/chat?requestId=' + requestId + '&otherUser=' + otherUserId;
-        }
-    },
-    */
     getChatId: function(requestId, matches) {
         var match = $.grep(matches, function(e){ return e.requestId == requestId; })[0];
         if (match.chatId) {
@@ -45,6 +37,10 @@ Template.displayRequest.rendered = function() {
                 Session.set('chatId', chatId);
                 Router.go('/chats/' + chatId);
             });
+        }
+        else {
+            Session.set('chatId', chatId);
+            Router.go('/chats/' + chatId);
         }
         MaterializeModal.close(false);
     });

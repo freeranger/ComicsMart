@@ -87,7 +87,7 @@ Meteor.startup(function () {
         var msgs = [];
         msgs.push({userId: user3, text: "Hi, I'm interested in buying yout Miracleman - how much is it?"});
         msgs.push({userId: user1, text: "How much you got? :)"});
-        var chatId = Chats.insert({isActive: true, userId1: user1, userId2: user3, user1RequestId: request1, user2RequestId: request2,  messages: msgs});
+        var chatId = Chats.insert({isActive: true, user1Id: user1, user2Id: user3, user1RequestId: request1, user2RequestId: request2,  messages: msgs});
 
 
         Requests.update({ _id: request1, "matches.requestId": request2}, { $set: { "matches.$.chatId": chatId }});

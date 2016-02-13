@@ -13,7 +13,8 @@
             <th data-field="volume">Volume</th>
             <th data-field="issue">Issue(s)</th>
             <th data-field="grade">Grade(s)</th>
-            <th  class="right" data-field="user">User</th>
+            <th data-field="user">User</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -30,8 +31,11 @@
                     <td>{{../volume}}</td>
                     <td>{{../minIssue}}{{#if $neq ../minIssue ../maxIssue}}-{{../maxIssue}}{{/if}}</td>
                     <td>{{ getGradeLabel ../minGrade}}{{#if $neq ../minGrade ../maxGrade}}-{{ getGradeLabel ../maxGrade}}{{/if}}</td>
+                    <td>
+                        @{{getUsername userId}}
+                    </td>
                     <td class="right">
-                        <a class="btn waves-effect waves-light blue js-Chat" style="text-transform: none;" href="/chats/{{chatId}}"><i class="material-icons right">chat</i>@{{getUsername userId}}</a>
+                        <a class="btn btn-floating waves-effect waves-light blue js-Chat tooltipped" data-tooltip="Chat to @{{getUsername userId}}" href="/chats/{{chatId}}"><i class="material-icons right">chat</i>@{{getUsername userId}}</a>
                     </td>
                 </tr>
             {{/each}}

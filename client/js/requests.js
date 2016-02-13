@@ -5,10 +5,7 @@ Session.set('showDelete', false);
 Template.requests.helpers({
     // find all visible docs
     requestList:function(){
-        Meteor.call('getRequests', function(error, result) {
-            Session.set('myRequests', result)
-        });
-        return Session.get('myRequests');
+        return Requests.find({ userId: Meteor.userId(), isActive: true }, {sort: {title: 1, minIssue:1}});
     },
     setCancelled: function() {
         addRequestCancelled = true;

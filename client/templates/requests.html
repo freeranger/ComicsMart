@@ -31,7 +31,7 @@
                     <td>{{volume}}</td>
                     <td>{{minIssue}}{{#if $neq minIssue maxIssue}}-{{maxIssue}}{{/if}}</td>
                     <td>{{ getGradeLabel minGrade}}{{#if $neq minGrade maxGrade}}-{{ getGradeLabel maxGrade}}{{/if}}</td>
-                    <td class="right">{{#if $gt matches.length 0}} <a data-id="{{_id}}" class="btn btn-floating waves-effect waves-light js-openRequest">{{matches.length}}</a>{{/if}}</td>
+                    <td class="right">{{#if $gt matches.length 0}} <a data-id="{{_id}}" data-tooltip="{{#if $gt matches.length 1}}Display all matches{{else}}Display match{{/if}}" class="btn btn-floating waves-effect waves-light tooltipped js-openRequest">{{matches.length}}</a>{{/if}}</td>
                 </tr>
             {{/each}}
         </tbody>

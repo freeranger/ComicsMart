@@ -28,6 +28,10 @@ Template.chats.rendered = function() {
         Session.set('showDeleteChats', !Session.get('showDeleteChats'));
     });
 
+    $('.js-chats').on('click', '.js-Chat', function(target) {
+        $('.tooltipped').tooltip('remove');
+    });
+
     $('.js-chats').on('click', '.js-removeChat', function(target) {
         var target = $(target.currentTarget);
         var id = target.data('id');
