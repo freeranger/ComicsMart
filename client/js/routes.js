@@ -9,16 +9,6 @@ Router.configure({
     }
 });
 
-
-// 'home' page
-/*
-Router.route('/', function () {
-    console.log("you hit / ");
-    this.render("navbar", {to:"header"});
-    this.render("home", {to:"main"});
-});
-*/
-
 Router.map(function() {
     this.route('home', {
         path: '/',
